@@ -1,0 +1,20 @@
+---
+- name: testing the when statement
+  hosts: compute
+  become: yes
+  handlers:
+   - name: web
+     service:
+       name: httpd
+       state: restarted
+     listen: "web"
+  tasks:
+   - name: changing the config
+     replace: 
+      path: /etc/httpd/conf/httpd.conf
+      regexp: "^Listen 81"
+      replace: "Listen 80"
+     when:
+      - ansible_hostname == "ip-172-31-109-82"
+     notify: "web"
+     

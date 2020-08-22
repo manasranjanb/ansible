@@ -1,0 +1,11 @@
+---
+- name:  ignore_errors testing
+  hosts: compute
+  tasks: 
+  - name: testing block and ignore errors
+    block:
+    - name: checking lineinfile
+      lineinfile:
+        path: /tmp/test.txt
+        line: "testing"
+    ignore_errors: yes

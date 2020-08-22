@@ -1,0 +1,17 @@
+---
+- name: testing block always
+  hosts: compute
+  tasks:
+  - name: testing rescue and always
+    block:
+    - name: testing
+      lineinfile:
+        path: /tmp/test.txt
+        create: yes
+        line: "test"
+    rescue: 
+    - debug: 
+       msg: " file is not exist"
+    always:
+    - debug:
+       msg: " this is dev env"

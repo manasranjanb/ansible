@@ -1,0 +1,15 @@
+---
+- name: this is tag testing
+  hosts: compute
+  become: yes
+  tasks:
+  - name: testing tag and variable
+    yum:
+      name: "{{ pkg }}"
+      state: absent
+  - name: creating and addding line on the file
+    lineinfile:
+      path: /tmp/test1.log
+      create: yes
+      line: testing
+    tags: "web"

@@ -1,0 +1,21 @@
+---
+- name: first basic playbook
+  hosts: compute
+  remote_user: cloud_user
+  become: yes
+  
+  tasks:
+   - name: installing apache
+     yum:
+      name: httpd
+      state: latest
+   - name: starting apache
+     service:
+       name: httpd
+       state: started
+       enabled: yes
+   - name: creating index file
+     lineinfile:
+       path: /var/www/html/index.html
+       create: yes
+       line: "hello world" 

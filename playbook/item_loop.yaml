@@ -1,0 +1,12 @@
+---
+- name: Creating the multiple files
+  hosts: ip-172-31-109-5
+  tasks:
+   - name: creating the files
+     file:
+      path: /tmp/{{item}}.txt
+      state: touch
+     with_items:
+      - file1
+      - file2
+      - file3

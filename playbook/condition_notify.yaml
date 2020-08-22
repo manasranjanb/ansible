@@ -1,0 +1,18 @@
+---
+- name: handler and notify 
+  hosts: ip-172-31-109-82
+  become: yes
+  handlers:
+   - name: restarting the web server
+     service:
+       name: httpd
+       state: restarted
+     listen: "web"
+  tasks:
+   - name: change config 
+     replace:
+      path: /etc/httpd/conf/httpd.conf
+      regexp: "^Listen 80"
+      replace: "Listen 81"
+     notify: "web" 
+      

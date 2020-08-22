@@ -1,0 +1,17 @@
+---
+- name: register testing
+  hosts: ip-172-31-109-5
+  become: yes
+  tasks:
+   - name: creating the file
+     file: 
+      path: /tmp/test.txt
+      state: touch 
+     register: var
+   - debug:
+      msg: "this is output {{var}}"
+   - name: saving the uid
+     lineinfile:
+      path: /tmp/test.txt
+      line: "{{var.uid}}"
+      
