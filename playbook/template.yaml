@@ -1,0 +1,10 @@
+---
+- name: this is testing the template feature
+  hosts: compute
+  become: yes
+  tasks:
+  - name: starting the template module
+    template: 
+      src: ~/git/ansible/template/httpd.j2  
+      dest: /etc/httpd/conf/httpd.conf
+      backup: yes
