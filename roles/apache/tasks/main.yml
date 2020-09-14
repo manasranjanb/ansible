@@ -1,0 +1,12 @@
+---
+# tasks file for apache
+- name: installing apache
+  yum:
+   name: httpd
+   state: latest
+- name: copying the config 
+  copy:
+   src: httpd.conf
+   dest: /etc/httpd/conf/httpd.conf
+   backup: yes
+  notify: apache

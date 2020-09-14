@@ -1,0 +1,5 @@
+- name: testing role
+  hosts: ip-172-31-109-82 
+  become: yes
+  roles:
+  - apache
