@@ -1,5 +1,0 @@
----
-# tasks file for apache
-- name: installing apache
-  yum:
-   state: latest

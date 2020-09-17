@@ -1,0 +1,11 @@
+- name: vault testing 
+  hosts: ip-172-31-109-82
+  become: yes
+  vars_files:
+  - /home/cloud_user/git/ansible/data.txt
+  tasks:
+  - name: user account creation
+    user:
+     name: "{{ username }}"
+     state: present
+     shell: /bin/bash  
